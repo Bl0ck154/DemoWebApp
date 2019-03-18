@@ -62,5 +62,11 @@ namespace WebApplication.AppContext
                 new Group { Id = 3, Name = "PP-12-3", FacultyId = 1 },
                 new Group { Id = 4, Name = "PP-12-4", FacultyId = 1 });
         }
+
+        public DbSet<WebApplication.Entities.Mark> Grade { get; set; }
+
+        public DbSet<WebApplication.Entities.Subject> Lesson { get; set; }
+
+        public DbSet<WebApplication.Entities.Teacher> Teacher { get; set; }
     }
 }
