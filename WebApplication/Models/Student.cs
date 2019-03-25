@@ -28,6 +28,6 @@ namespace WebApplication.Entities
 
         public int GroupId { get; set; }
 
-        public List<Mark> Marks { get; set; }
+        public List<StudentMark> StudentMarks { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
         // GET: Marks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Grade.ToListAsync());
+            return View(await _context.Marks.ToListAsync());
         }
 
         // GET: Marks/Details/5
@@ -33,7 +33,7 @@ namespace WebApplication.Controllers
                 return NotFound();
             }
 
-            var mark = await _context.Grade
+            var mark = await _context.Marks
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (mark == null)
             {
@@ -73,7 +73,7 @@ namespace WebApplication.Controllers
                 return NotFound();
             }
 
-            var mark = await _context.Grade.FindAsync(id);
+            var mark = await _context.Marks.FindAsync(id);
             if (mark == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace WebApplication.Controllers
                 return NotFound();
             }
 
-            var mark = await _context.Grade
+            var mark = await _context.Marks
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (mark == null)
             {
@@ -139,15 +139,15 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var mark = await _context.Grade.FindAsync(id);
-            _context.Grade.Remove(mark);
+            var mark = await _context.Marks.FindAsync(id);
+            _context.Marks.Remove(mark);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MarkExists(int id)
         {
-            return _context.Grade.Any(e => e.Id == id);
+            return _context.Marks.Any(e => e.Id == id);
         }
     }
 }

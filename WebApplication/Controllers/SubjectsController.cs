@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
         // GET: Subjects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Lesson.ToListAsync());
+            return View(await _context.Subjects.ToListAsync());
         }
 
         // GET: Subjects/Details/5
@@ -33,7 +33,7 @@ namespace WebApplication.Controllers
                 return NotFound();
             }
 
-            var subject = await _context.Lesson
+            var subject = await _context.Subjects
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (subject == null)
             {
@@ -73,7 +73,7 @@ namespace WebApplication.Controllers
                 return NotFound();
             }
 
-            var subject = await _context.Lesson.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace WebApplication.Controllers
                 return NotFound();
             }
 
-            var subject = await _context.Lesson
+            var subject = await _context.Subjects
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (subject == null)
             {
@@ -139,15 +139,15 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var subject = await _context.Lesson.FindAsync(id);
-            _context.Lesson.Remove(subject);
+            var subject = await _context.Subjects.FindAsync(id);
+            _context.Subjects.Remove(subject);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SubjectExists(int id)
         {
-            return _context.Lesson.Any(e => e.Id == id);
+            return _context.Subjects.Any(e => e.Id == id);
         }
     }
 }

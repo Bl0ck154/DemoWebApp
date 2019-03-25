@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace WebApplication.Entities
 {
-    [Table("marks")]
-    public class Mark
+    [Table("studentsmarks")]
+    public class StudentMark
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("id")]
+        [Column("id")]    
         public int Id { get; set; }
 
-        [Column("value")]
-        public int Value { get; set; }
 
-        public List<StudentMark> StudentMarks { get; set; }
+        public int StudentId { get; set; }
+        public Student Student { get; set; }
+
+        public int MarkId { get; set; }
+        public Mark Mark { get; set; }
     }
 }
