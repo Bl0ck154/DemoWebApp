@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WebApplication.Entities;
 
 namespace WebApplication.AppContext
@@ -74,6 +75,13 @@ namespace WebApplication.AppContext
                 new Group { Id = 2, Name = "PP-12-2", FacultyId = 1 },
                 new Group { Id = 3, Name = "PP-12-3", FacultyId = 1 },
                 new Group { Id = 4, Name = "PP-12-4", FacultyId = 1 });
+
+            List<Mark> marks = new List<Mark>();
+            for (int i = 1; i <= 12; i++)
+            {
+                marks.Add(new Mark { Id = i, Value = i });
+            }
+            builder.Entity<Mark>().HasData(marks);
         }
 
         public DbSet<WebApplication.Entities.Mark> Marks { get; set; }
