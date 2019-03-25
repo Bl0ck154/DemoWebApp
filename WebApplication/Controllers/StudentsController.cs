@@ -48,7 +48,7 @@ namespace WebApplication.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
-            ViewData["GroupId"] = new SelectList(_context.Groups, "Id", "Id");
+            ViewData["Groups"] = new SelectList(_context.Groups, "Id", "Name");
             return View();
         }
 
@@ -82,7 +82,7 @@ namespace WebApplication.Controllers
             {
                 return NotFound();
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "Id", "Id", student.GroupId);
+            ViewData["Groups"] = new SelectList(_context.Groups, "Id", "Name");
             return View(student);
         }
 
@@ -118,7 +118,7 @@ namespace WebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GroupId"] = new SelectList(_context.Groups, "Id", "Id", student.GroupId);
+            ViewData["Groups"] = new SelectList(_context.Groups, "Id", "Name");
             return View(student);
         }
 
